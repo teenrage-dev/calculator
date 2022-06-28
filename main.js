@@ -16,14 +16,17 @@ const signs = ['+', '-', 'X', '/'];
 
 
 refs.valueList.addEventListener('click', onValueListClick);
-refs.deleteButton.onClick = clearAll;
+
 
 
 
 function onValueListClick(e) {
 
     if(!e.target.classList.contains('value-item')) return;
-    if(e.target.classList.contains('delete')) return;
+    if(e.target.classList.contains('delete')) {
+        clearAll();
+        return
+    } ;
     refs.resultValue.textContent = '';
 
     const value = e.target.textContent;
