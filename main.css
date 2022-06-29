@@ -61,9 +61,12 @@ body{
     grid-template-rows: repeat(2, 1fr) 0fr repeat(2, 1fr); 
     gap: 20px 20px; 
     width: 100%;
-    height: 425px;
+    height: auto;
     align-content: center;
 }
+
+
+
 
 .value-item{
     display: flex;
@@ -72,6 +75,7 @@ body{
     min-width: 60px;
     width: 100%;
     min-height: 70px;
+    padding: 0;
 
     color: #848484;
     font-size: 40px;
@@ -85,6 +89,37 @@ body{
     border-radius: 50px;
 }
 
+@media screen and (max-height: 668px) {
+    .value-item{
+        min-height: 45px;
+        min-width: auto;
+    }
+}
+@media screen and (max-height: 570px) {
+    .value-list{
+        gap: 15px 15px;
+    }
+    .value-item{
+        max-height: 30px;
+        max-width: 30px;
+        min-width: 55px;
+        min-height: 55px;
+    }
+    .container{
+        padding: 0 20px 30px 20px;
+    
+    }
+    .calculator{
+        min-height: calc(100vh - 30px);
+    }
+    .value-item:nth-child(15),
+    .value-item:nth-child(8){
+        height: auto;
+        min-height: 70px;
+        max-height: 100%;
+    }
+}
+    
 
 
 .value-item:nth-child(1){
@@ -93,7 +128,6 @@ body{
 .value-item:nth-child(1):hover,
 .value-item:nth-child(15):hover{
     color: #ffa0486c;
-    border-color: #ffa0486c;
 }
 
 .value-item:nth-child(2):hover,
@@ -147,6 +181,7 @@ body{
     color: #FFA048;
     font-size: 22px;
     line-height: 1.18;
+    position: relative;
 }
 .divide { 
     grid-area: 1 / 2 / 2 / 3;
@@ -170,10 +205,17 @@ body{
     max-width: 100%;
 }
 
-.delete hr{
+
+.delete::after{
+    content: "";
+    display: flex;
+    position: absolute;
     padding: 0;
     margin: 0;
     width: 50px;
-    border-color: #FFA048;
+    border: 1px solid #FFA048;
 }
 
+.delete:hover::after{
+    border-color:#ffa0486c;
+};
